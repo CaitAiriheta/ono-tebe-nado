@@ -1,1 +1,391 @@
-/* место для вашего кода */
+* {
+	scroll-behavior: smooth;
+}
+
+body {
+	display: grid;
+	justify-items: center;
+}
+
+.global-block-padding { /*класс для внутренних отступов в 50px от левого и правого края body у больших логических блоков страницы*/
+	padding: 0 50px;
+}
+
+body > * { /*все блоки внутри body (прямые дочерние элементы) получают ширину 100% body*/
+	width: 100%;
+}
+
+
+/* ---------  БЛОК  ШАПКИ  СТРАНИЦЫ  --------- */
+header {
+	display: grid;
+	grid-template-columns: 5fr 2fr 5fr;
+	align-items: center;
+	height: 109px;
+	margin-top: 92px;
+	margin-bottom: 92px;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+/* БЛОК НАВИГАЦИИ */
+.header-menu {
+	text-transform: lowercase;
+}
+
+.header-links-list {
+	list-style: circle;
+	display: flex;
+	flex-direction: row;
+	line-height: 21px;
+}
+
+.header-links-list-item {
+	margin-left: 23px;
+}
+
+.header-links-list-item:first-child {  /*первый элемент навигации*/
+	margin-left: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+.header-link-active {
+	text-decoration: none;
+}
+
+.header-link {
+	text-underline-position: under; /*считаю уместным указать отдельно именно сслыкам из меню, а не для всех ссылок блока header, 
+	т.к. это же позиционирование подчёркивания используется затем в теге address, для которого прописан тот же стиль ниже, в блоке footer
+	(чтобы не дублировать стили к одному и тому же элементу)*/
+}
+
+/* БЛОК ЛОГОТИПА */
+.header-logo {
+	display: block;
+	justify-self: center; /*чтобы блок-ссылка занимала как можно меньше пространства, ограничиваясь лишь шириной изображения*/
+}
+
+.header-logo-image {
+	height: 105px;
+}
+
+/* БЛОК КОНТАКТОВ */
+address {
+	text-decoration: none;
+	font-style: normal;
+	line-height: 24.3px;
+	width: 240px;
+}
+
+address a{
+	text-underline-position: under;
+}
+
+.header-address {
+	justify-self: end;
+}
+
+
+/* ---------  БЛОК  MAIN  --------- */
+main {
+
+}
+
+/* --- ВХОДНАЯ СЕКЦИЯ --- */
+.cover {
+	background: url(../images/cover.jpg);
+	background-size: cover; 
+	position: relative; /*относительное позиционирование для растяжения оверлея на всю область родителя*/ 
+	padding-bottom: 62px;
+}
+
+.cover > * { /*все дочерние элементы секции cover получают относительное позиционирование для расположения поверх оверлея, а так же 
+отступы слева и справа по 50px*/
+	position: relative;
+	padding-left: 50px;
+	padding-right: 50px;
+	z-index:2;
+}  
+
+.overlay {
+	padding: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index:1;
+	background: rgba(0,0,0,0.5);
+}
+
+h1 {
+	padding-top: 165px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 100px;
+	font-weight: bold;
+	line-height: 100%;
+	letter-spacing: 30px;
+}
+
+h1 > span { /*каждая строка заголовка становится блоком и получает "межстрочный" интервал в 20px*/
+	display: block;
+	margin-top: 20px;
+}
+
+h1 > span:first-child { /*обнуление межстрочного интервала у первой строки*/
+	margin-top: 0;
+}
+
+.h1-first-word { /*классы для выравнивания каждой из строк заголовка*/
+	text-align: left;
+}
+
+.h1-second-word {
+	text-align: center;
+}
+
+.h1-third-word {
+	text-align: right;
+}
+
+.h1-big-letter-spacing { /*класс для увеличенного расстояния между отдельными буквами*/ 
+	letter-spacing: 60px;
+}
+
+.h1-last-letter-zero-spacing { /*класс для обнуления межбуквенного расстояния у последней буквы*/
+	letter-spacing: 0;
+}
+
+.cover-description {
+	margin-top: 147px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	column-gap: 78px;
+}
+
+.cover-description-text {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: normal;
+	line-height: 28px;
+	word-spacing: 10px;
+	text-align: center;
+}
+
+.bet-button {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: normal;
+	line-height: 26px;
+	background: transparent;
+	border: 1px solid #fff;
+	border-radius: 0;
+	padding: 12px 32px;
+}
+
+.bet-button:hover {
+	background: rgba(255,255,255,0.3);
+	cursor: pointer;
+}
+
+/* --- СЕКЦИЯ ЛОТОВ --- */
+.lots {
+	margin-top: 180px;
+}
+
+.lots-heading {
+	margin-left: 40px;
+	color: #000;
+	text-transform: uppercase;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 47px;
+}
+
+.lots-card-list {
+	margin-top: 27px;
+	margin-bottom: 30px;
+	height: 100%;
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	justify-content: space-between;
+	column-gap: 25px;
+}
+
+.card-link {
+	display: block;
+	position: relative;
+	text-decoration: none;
+	height: 100%;
+}
+
+.lots-card-list-item {
+	position: relative;
+	padding: 50px 40px;
+	height: 100%;
+	min-height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 2;
+}
+
+.card-type-film {
+	background: url(../images/card-lot-01.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.card-type-book {
+	background: url(../images/card-lot-02.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.card-type-picture {
+	background: url(../images/card-lot-03.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
+.card-title {
+	text-transform: uppercase;
+	text-decoration: underline;
+	color: #fff;
+	font-size: 22px;
+	line-height: 120%;
+	font-weight: bold;
+}
+
+.card-text {
+	margin-top: 30px;
+	color: #fff;
+	font-size: 20px;
+	line-height: 120%;
+	font-weight: normal;
+}
+
+.lots-look-more-link {
+	margin-left: 40px;
+	text-transform: lowercase;
+	text-underline-position: under;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 23px;
+}
+
+/* --- СЕКЦИЯ ОБ АУКЦИОНЕ --- */
+
+.about {
+	margin-top: 180px;
+	margin-bottom: 180px;
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	column-gap: 25px;
+}
+
+.about-column {
+
+}
+
+.about-column:last-child {
+	grid-column-start: span 2;
+	display: flex;
+	flex-direction: column;
+}
+
+.about-logo {
+	display: block;
+	margin: 0 auto;
+	width: 240px;
+	height:240px;
+	border-radius: 120px;
+	background-color: #000;
+}
+
+.about-logo-image {
+	height: 114px;
+	margin: 63px auto;
+}
+
+
+.about-title {
+	height: 240px;
+	display: flex;
+	align-items: center;
+}
+
+.about-title > h2 {
+	text-transform: uppercase;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.about-text {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 23px;
+}
+
+.about-text > p {
+	margin-bottom: 25px;
+}
+
+.about-text > p:last-child {
+	margin-bottom: 0;
+}
+
+/* ---------  БЛОК  ПОДВАЛА  СТРАНИЦЫ  --------- */
+footer {
+	margin-bottom: 90px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	font-size: 18px;
+	font-weight: normal;
+	align-items: start;
+}
+
+.footer-menu {
+	justify-self: center;
+}
+
+.footer-menu-list {
+	list-style: none;
+}
+
+.footer-menu-list-item {
+	text-transform: lowercase;
+	text-align: center;
+	line-height: 21px;
+}
+
+.footer-menu-link {
+	text-underline-position: under;
+}
+
+.footer-menu-link-active {
+	text-decoration: none;
+}
+
+.footer-social-list {
+	list-style: none;
+	display: flex;
+	justify-self: end;
+	column-gap: 48px;
+}
+
+.footer-social-list-item {
+	height: 48px;
+}
+
+.footer-social-link {
+	text-decoration: none;
+}
+
+.footer-social-icon {
+	height: 100%;
+}
